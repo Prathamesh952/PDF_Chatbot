@@ -148,3 +148,99 @@ Markdown Formatted Answer
 <p align="center">
 Built as a production-style RAG system demonstrating modern AI document intelligence architecture.
 </p>
+
+
+<hr>
+
+<h2>▶️ How to Run This Project (Step-by-Step)</h2>
+
+<p>
+To keep the repository lightweight, the <b>virtual environment (venv)</b> folder has been removed due to GitHub file size limits.  
+Please create your own virtual environment before running the project.
+</p>
+
+<h3>1️⃣ Clone the Repository</h3>
+
+<pre>
+git clone https://github.com/your-username/pdf-qa-ai.git
+cd pdf-qa-ai
+</pre>
+
+<h3>2️⃣ Create Virtual Environment</h3>
+
+<pre>
+python -m venv venv
+</pre>
+
+<h3>3️⃣ Activate Virtual Environment</h3>
+
+<p><b>Windows:</b></p>
+<pre>
+venv\Scripts\activate
+</pre>
+
+<p><b>Mac/Linux:</b></p>
+<pre>
+source venv/bin/activate
+</pre>
+
+<h3>4️⃣ Install Dependencies</h3>
+
+<pre>
+pip install -r requirements.txt
+</pre>
+
+<h3>5️⃣ Add Environment Variables</h3>
+
+<p>Create a <b>.env</b> file in the project root and add:</p>
+
+<pre>
+OPENAI_API_KEY=your_api_key_here
+</pre>
+
+<p>If running with local models, this step can be skipped.</p>
+
+<h3>6️⃣ Start Backend Server</h3>
+
+<pre>
+uvicorn app.main:app --reload
+</pre>
+
+<p>The API will start at:</p>
+
+<pre>
+http://127.0.0.1:8000
+</pre>
+
+<p>Interactive API docs available at:</p>
+
+<pre>
+http://127.0.0.1:8000/docs
+</pre>
+
+<h3>7️⃣ Run Frontend</h3>
+
+<p>Open the frontend file directly in browser:</p>
+
+<pre>
+frontend/index.html
+</pre>
+
+<h3>8️⃣ Test the System</h3>
+
+<ul>
+<li>Upload a PDF</li>
+<li>Ask a question</li>
+<li>The AI will return a Markdown-formatted answer</li>
+</ul>
+
+<hr>
+
+<h2>⚠️ Important Notes</h2>
+
+<ul>
+<li>The <b>venv folder is intentionally excluded</b> to keep the repo small.</li>
+<li>If the project does not run, reinstall dependencies.</li>
+<li>Ensure Python version is 3.10 – 3.12.</li>
+<li>For best accuracy, use text-based PDFs instead of scanned ones.</li>
+</ul>
