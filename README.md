@@ -149,6 +149,76 @@ Markdown Formatted Answer
 Built as a production-style RAG system demonstrating modern AI document intelligence architecture.
 </p>
 
+<hr>
+
+<h2>📂 Project File Structure (Actual Implementation)</h2>
+
+<p>
+The project is divided into two main parts: a backend service handling the AI and document processing logic, and a frontend interface for user interaction.
+</p>
+
+<pre>
+chatpdf-ai/
+│
+├── backend/                     # Python backend (AI + API logic)
+│   │
+│   ├── app.py                   # Main backend server (handles upload, QA, processing)
+│   ├── requirements.txt         # Backend dependencies
+│   │
+│   └── storage/                 # Local data storage
+│       ├── documents.json       # Stores processed document metadata
+│       └── chat_history.json    # Stores previous user questions & responses
+│
+├── frontend/                    # User interface
+│   │
+│   ├── index.html               # Main UI page
+│   ├── style.css                # Frontend styling
+│   ├── app.js                   # Handles API calls & UI logic
+│   └── logo.png                 # UI asset
+│
+└── README.md                    # Project documentation
+</pre>
+
+<hr>
+
+<h2>🧠 Architecture Explanation</h2>
+
+<ul>
+<li><b>Backend (Python):</b> Handles PDF upload, document parsing, embedding creation, storage, and AI-based question answering.</li>
+
+<li><b>Storage Layer:</b> JSON files store processed documents and chat history locally to simulate a lightweight database.</li>
+
+<li><b>Frontend:</b> Provides a simple interface where users upload PDFs, ask questions, and view AI-generated answers.</li>
+
+<li><b>Communication Flow:</b> The frontend sends requests to the backend API, which processes the document using the RAG pipeline and returns formatted answers.</li>
+</ul>
+
+<hr>
+
+<h2>🔄 System Flow</h2>
+
+<pre>
+User Uploads PDF (Frontend)
+        ↓
+Backend receives file
+        ↓
+Text extraction + processing
+        ↓
+Document stored in storage/documents.json
+        ↓
+User asks question
+        ↓
+Backend retrieves relevant context
+        ↓
+AI generates answer
+        ↓
+Frontend displays result
+</pre>
+
+<p>
+This architecture keeps the system simple, modular, and suitable for academic demonstration while still reflecting real-world AI document assistant design.
+</p>
+
 
 <hr>
 
