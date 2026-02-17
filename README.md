@@ -4,7 +4,7 @@ RAG-based PDF assistant that lets users upload documents, generate embeddings, a
 <h1 align="center">📄 PDF.QA AI – Intelligent Document Assistant</h1>
 
 <p align="center">
-An AI-powered document assistant that enables semantic question answering, summarization, and note generation from PDFs using Retrieval-Augmented Generation (RAG).
+An AI-powered document assistant that allows users to upload PDFs and interact with them using natural language queries.
 </p>
 
 <hr>
@@ -12,13 +12,14 @@ An AI-powered document assistant that enables semantic question answering, summa
 <h2>🚀 Project Overview</h2>
 
 <p>
-PDF.QA AI is an intelligent document processing system that allows users to upload PDFs and interact with them using natural language queries.  
-The system converts documents into embeddings, stores them in a vector database, retrieves relevant context, and generates structured answers using an LLM.
+PDF.QA AI is a lightweight AI-based document interaction system designed for academic demonstration and practical use. 
+Users can upload PDF files and ask questions related to the document content. The backend extracts text from the PDF, processes it, 
+and generates context-aware responses using an AI model.
 </p>
 
 <p>
-Unlike traditional keyword search, this system performs <b>semantic retrieval</b>, ensuring higher accuracy and context-aware responses.  
-It also includes hallucination control to prevent answers when the information is not present in the document.
+Unlike simple keyword search tools, this system retrieves relevant context from the uploaded document and generates structured answers. 
+It also includes a safeguard to avoid generating responses when the answer is not present in the document.
 </p>
 
 <hr>
@@ -27,40 +28,36 @@ It also includes hallucination control to prevent answers when the information i
 
 <ul>
 <li>📄 Upload and process PDF documents</li>
-<li>🔍 Semantic search using vector embeddings</li>
+<li>🔍 Context-based document retrieval</li>
 <li>🤖 AI-powered Question Answering</li>
-<li>📝 Automatic Notes Generation</li>
-<li>📚 Smart PDF Summarization</li>
-<li>❓ Auto-generated questions from document</li>
-<li>📌 Markdown formatted responses</li>
-<li>🛡 Hallucination control (no fake answers)</li>
+<li>📝 Basic notes and summary generation</li>
+<li>📌 Structured response formatting</li>
+<li>💾 Local chat history storage</li>
+<li>🛡 Prevents answers when information is unavailable</li>
 </ul>
 
 <hr>
 
 <h2>🧠 System Architecture</h2>
 
-<p>The system follows a production-style Retrieval-Augmented Generation pipeline:</p>
+<p>The system follows a simplified document assistant pipeline:</p>
 
 <pre>
 User Uploads PDF
         ↓
-Document Processing Pipeline
-(Text Extraction + OCR + Cleaning)
+Backend receives file
         ↓
-Chunking & Metadata Creation
+Text Extraction & Processing
         ↓
-Embedding Model
+Document stored locally
         ↓
-Vector Database Storage
+User asks question
         ↓
-User Question
+Relevant context retrieved
         ↓
-Semantic Retriever
+AI generates response
         ↓
-LLM Generator
-        ↓
-Markdown Formatted Answer
+Frontend displays answer
 </pre>
 
 <hr>
@@ -73,37 +70,31 @@ Markdown Formatted Answer
  └──────┬───────┘
         ↓
  ┌──────────────┐
- │  FastAPI API │
+ │   Frontend   │
+ │ HTML/CSS/JS  │
  └──────┬───────┘
         ↓
  ┌──────────────┐
- │ PDF Ingestion│
- │ Parsing/OCR  │
+ │ Python Backend│
+ │    app.py     │
  └──────┬───────┘
         ↓
  ┌──────────────┐
- │ Chunking     │
- │ + Metadata   │
+ │ PDF Parsing  │
+ │ Text Process │
  └──────┬───────┘
         ↓
  ┌──────────────┐
- │ Embeddings   │
+ │ Local Storage│
+ │ JSON files   │
  └──────┬───────┘
         ↓
  ┌──────────────┐
- │ Vector DB    │
+ │ AI Generator │
  └──────┬───────┘
         ↓
  ┌──────────────┐
- │ Retriever    │
- └──────┬───────┘
-        ↓
- ┌──────────────┐
- │   LLM (RAG)  │
- └──────┬───────┘
-        ↓
- ┌──────────────┐
- │ Markdown Ans │
+ │  Response UI │
  └──────────────┘
 </pre>
 
@@ -112,12 +103,11 @@ Markdown Formatted Answer
 <h2>⚙️ Tech Stack</h2>
 
 <ul>
-<li><b>Backend:</b> FastAPI, Python</li>
-<li><b>Vector Database:</b> ChromaDB</li>
-<li><b>Embeddings:</b> OpenAI / Sentence Transformers</li>
-<li><b>LLM:</b> OpenAI / Local LLM (Ollama)</li>
-<li><b>PDF Parsing:</b> PyMuPDF, OCR support</li>
-<li><b>Frontend:</b> HTML, CSS, JS</li>
+<li><b>Backend:</b> Python (single server file - app.py)</li>
+<li><b>PDF Processing:</b> Python PDF libraries</li>
+<li><b>Storage:</b> JSON files (lightweight local storage)</li>
+<li><b>Frontend:</b> HTML, CSS, JavaScript</li>
+<li><b>AI Integration:</b> LLM-based response generation</li>
 </ul>
 
 <hr>
@@ -127,56 +117,32 @@ Markdown Formatted Answer
 <ul>
 <li>📚 Student study assistant</li>
 <li>📑 Research paper exploration</li>
-<li>🏢 Enterprise document search</li>
-<li>📖 Knowledge base assistant</li>
+<li>🧾 Document search demo system</li>
+<li>📖 Academic AI project</li>
 </ul>
 
 <hr>
 
-<h2>📌 Future Improvements</h2>
-
-<ul>
-<li>Multi-PDF chat support</li>
-<li>Page-level citation highlighting</li>
-<li>Streaming responses</li>
-<li>Role-based document access</li>
-<li>Cloud deployment with scalable vector storage</li>
-</ul>
-
-<hr>
-
-<p align="center">
-Built as a production-style RAG system demonstrating modern AI document intelligence architecture.
-</p>
-
-<hr>
-
-<h2>📂 Project File Structure (Actual Implementation)</h2>
-
-<p>
-The project is divided into two main parts: a backend service handling the AI and document processing logic, and a frontend interface for user interaction.
-</p>
+<h2>📂 Project File Structure</h2>
 
 <pre>
 chatpdf-ai/
 │
-├── backend/                     # Python backend (AI + API logic)
-│   │
-│   ├── app.py                   # Main backend server (handles upload, QA, processing)
+├── backend/
+│   ├── app.py                   # Main backend server (upload, processing, QA)
 │   ├── requirements.txt         # Backend dependencies
 │   │
-│   └── storage/                 # Local data storage
-│       ├── documents.json       # Stores processed document metadata
-│       └── chat_history.json    # Stores previous user questions & responses
+│   └── storage/
+│       ├── documents.json       # Stores processed document data
+│       └── chat_history.json    # Stores previous user interactions
 │
-├── frontend/                    # User interface
-│   │
-│   ├── index.html               # Main UI page
-│   ├── style.css                # Frontend styling
-│   ├── app.js                   # Handles API calls & UI logic
+├── frontend/
+│   ├── index.html               # Main UI
+│   ├── style.css                # Styling
+│   ├── app.js                   # Handles API calls
 │   └── logo.png                 # UI asset
 │
-└── README.md                    # Project documentation
+└── README.md
 </pre>
 
 <hr>
@@ -184,133 +150,27 @@ chatpdf-ai/
 <h2>🧠 Architecture Explanation</h2>
 
 <ul>
-<li><b>Backend (Python):</b> Handles PDF upload, document parsing, embedding creation, storage, and AI-based question answering.</li>
-
-<li><b>Storage Layer:</b> JSON files store processed documents and chat history locally to simulate a lightweight database.</li>
-
-<li><b>Frontend:</b> Provides a simple interface where users upload PDFs, ask questions, and view AI-generated answers.</li>
-
-<li><b>Communication Flow:</b> The frontend sends requests to the backend API, which processes the document using the RAG pipeline and returns formatted answers.</li>
+<li><b>Backend (app.py):</b> Handles PDF upload, parsing, processing, and AI-based question answering.</li>
+<li><b>Storage Layer:</b> JSON files store processed documents and chat history locally, acting as a lightweight database.</li>
+<li><b>Frontend:</b> Provides a simple interface to upload PDFs, ask questions, and view answers.</li>
+<li><b>Communication Flow:</b> Frontend sends requests → backend processes document → AI generates response → frontend displays result.</li>
 </ul>
 
 <hr>
 
-<h2>🔄 System Flow</h2>
-
-<pre>
-User Uploads PDF (Frontend)
-        ↓
-Backend receives file
-        ↓
-Text extraction + processing
-        ↓
-Document stored in storage/documents.json
-        ↓
-User asks question
-        ↓
-Backend retrieves relevant context
-        ↓
-AI generates answer
-        ↓
-Frontend displays result
-</pre>
-
-<p>
-This architecture keeps the system simple, modular, and suitable for academic demonstration while still reflecting real-world AI document assistant design.
-</p>
-
-
-<hr>
-
-<h2>▶️ How to Run This Project (Step-by-Step)</h2>
-
-<p>
-To keep the repository lightweight, the <b>virtual environment (venv)</b> folder has been removed due to GitHub file size limits.  
-Please create your own virtual environment before running the project.
-</p>
-
-<h3>1️⃣ Clone the Repository</h3>
-
-<pre>
-git clone https://github.com/your-username/pdf-qa-ai.git
-cd pdf-qa-ai
-</pre>
-
-<h3>2️⃣ Create Virtual Environment</h3>
-
-<pre>
-python -m venv venv
-</pre>
-
-<h3>3️⃣ Activate Virtual Environment</h3>
-
-<p><b>Windows:</b></p>
-<pre>
-venv\Scripts\activate
-</pre>
-
-<p><b>Mac/Linux:</b></p>
-<pre>
-source venv/bin/activate
-</pre>
-
-<h3>4️⃣ Install Dependencies</h3>
-
-<pre>
-pip install -r requirements.txt
-</pre>
-
-<h3>5️⃣ Add Environment Variables</h3>
-
-<p>Create a <b>.env</b> file in the project root and add:</p>
-
-<pre>
-OPENAI_API_KEY=your_api_key_here
-</pre>
-
-<p>If running with local models, this step can be skipped.</p>
-
-<h3>6️⃣ Start Backend Server</h3>
-
-<pre>
-uvicorn app.main:app --reload
-</pre>
-
-<p>The API will start at:</p>
-
-<pre>
-http://127.0.0.1:8000
-</pre>
-
-<p>Interactive API docs available at:</p>
-
-<pre>
-http://127.0.0.1:8000/docs
-</pre>
-
-<h3>7️⃣ Run Frontend</h3>
-
-<p>Open the frontend file directly in browser:</p>
-
-<pre>
-frontend/index.html
-</pre>
-
-<h3>8️⃣ Test the System</h3>
+<h2>📌 Future Improvements</h2>
 
 <ul>
-<li>Upload a PDF</li>
-<li>Ask a question</li>
-<li>The AI will return a Markdown-formatted answer</li>
+<li>Database integration instead of JSON storage</li>
+<li>Multi-PDF support</li>
+<li>Improved semantic retrieval</li>
+<li>Page citation highlighting</li>
+<li>Streaming responses</li>
+<li>Cloud deployment</li>
 </ul>
 
 <hr>
 
-<h2>⚠️ Important Notes</h2>
-
-<ul>
-<li>The <b>venv folder is intentionally excluded</b> to keep the repo small.</li>
-<li>If the project does not run, reinstall dependencies.</li>
-<li>Ensure Python version is 3.10 – 3.12.</li>
-<li>For best accuracy, use text-based PDFs instead of scanned ones.</li>
-</ul>
+<p align="center">
+Built as an academic AI project demonstrating document intelligence workflow and AI-assisted document interaction.
+</p>
